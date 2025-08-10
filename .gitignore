@@ -1,24 +1,34 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # Logs
-logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# IDE files
+.vscode/
+.idea/
+*.swp
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# OS-specific
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# Vite cache
+.vite/
+
+# TypeScript build cache
+*.tsbuildinfo
