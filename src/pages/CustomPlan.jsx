@@ -1,5 +1,4 @@
 import { useCityHopper } from "../CityHopperContext";
-
 export default function CustomPlan() {
   const {
     city,
