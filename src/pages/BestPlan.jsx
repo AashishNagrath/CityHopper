@@ -1,5 +1,4 @@
 import { useCityHopper } from "../CityHopperContext";
-import { useLocation } from "react-router-dom";
 import { useState } from "react";
 export default function BestPlan() {
   const {
@@ -8,7 +7,11 @@ export default function BestPlan() {
     tourType, setTourType,
     visitTime, setVisitTime
   } = useCityHopper();
-  
+
+  const isFormValid = arrivalMode !== "" &&
+    (tourType === "Full Time" || "Limited Time" && visitTime && Number(visitTime) > 0);
+
+
   const handlelog = () => {
     console.log("City:", city);
     console.log("Arrival Mode:", arrivalMode);
@@ -29,7 +32,7 @@ export default function BestPlan() {
         className="border p-2 rounded w-64 mb-6"
       >
         <option value="">Select Arrival Mode</option>
-        <option value="car">Car</option>
+        <option value="road">Road</option>
         <option value="train">Train</option>
         <option value="plane">Plane</option>
       </select>
@@ -40,7 +43,7 @@ export default function BestPlan() {
             type="radio"
             value="Full Time"
             checked={tourType === "Full Time"}
-            onChange={() => setTourType("Full Time")}
+            onChange={() =>setTourType("Full Time")}
             className="mr-2"
           />
           Full Time
@@ -63,7 +66,8 @@ export default function BestPlan() {
                 type="number"
                 min="1"
                 value={visitTime}
-                onChange={(e) => setVisitTime(e.target.value)}
+                onChange={(e) => setVisitTime(e.target.value)
+                }
                 className="border p-2 rounded w-32 ml-2"
                 placeholder="Hours"
               />
@@ -72,6 +76,7 @@ export default function BestPlan() {
         )}
       </div>
       <button
+        disabled={!isFormValid}
         onClick={handlelog}
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
         Log Details

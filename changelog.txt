@@ -8,4 +8,6 @@
     9 pm 
     added geoapify api function calls to autocomplete a city search
     9:15 pm
-    diables the buttons until a valid city is selected from the suggestions
+    disables the buttons until a valid city is selected from the suggestions
+    11 pm
+    disables the  buttons until the form is complete in both bestplan and customplan

@@ -15,7 +15,7 @@ export default function CustomPlan() {
         : [...prev, spot]
     );
   };
-
+  const isFormValid = selectedSpots.length > 0 && arrivalMode !== "";
   const handlelog = () => {
     console.log("City:", city);
     console.log("Arrival Mode:", arrivalMode);
@@ -32,7 +32,7 @@ export default function CustomPlan() {
         className="border p-2 rounded w-64 mb-6"
       >
         <option value="">Select Arrival Mode</option>
-        <option value="car">Car</option>
+        <option value="road">Road</option>
         <option value="train">Train</option>
         <option value="plane">Plane</option>
       </select>
@@ -51,6 +51,7 @@ export default function CustomPlan() {
         ))}
       </div>
       <button
+        disabled={!isFormValid}
         onClick={handlelog}
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
         Log Details
