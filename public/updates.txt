@@ -1,0 +1,3 @@
+10 Aug 25 6 pm
+Created a basic layout of the website, implemented basic functionality for 
+selecting the basic tourist spots, cities, etc.
