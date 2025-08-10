@@ -1,0 +1,9 @@
+10 Aug 25 
+    6 pm
+        Created a basic layout of the website, implemented basic functionality for 
+        selecting the basic tourist spots, cities, etc.
+    7 pm
+        used react context to make all user inputs global
+        change updates.txt to changelog.txt and moved it to root
+
+

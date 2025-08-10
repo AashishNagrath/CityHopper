@@ -1,12 +1,14 @@
+import { useCityHopper } from "../CityHopperContext";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 export default function BestPlan() {
-  const location = useLocation();
-  const { city } = location.state || {};
-  const [arrivalMode, setArrivalMode] = useState("");
-  const [tourType, setTourType] = useState("Full Time");
-  const [visitTime, setVisitTime] = useState("");
-
+  const {
+    city,
+    arrivalMode,setArrivalMode,
+    tourType, setTourType,
+    visitTime, setVisitTime
+  } = useCityHopper();
+  
   const handlelog = () => {
     console.log("City:", city);
     console.log("Arrival Mode:", arrivalMode);
