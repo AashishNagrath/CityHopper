@@ -6,10 +6,12 @@ import { fetchCitySuggestions } from "../api/geoapify";
 export default function Home() {
   const { city, setCity } = useCityHopper();
   const [suggestions, setSuggestions] = useState([]);
+  const [validcity, setValidCity] = useState(false);
 
   const handleInputChange = async (e) => {
     const value = e.target.value;
     setCity(value);
+    setValidCity(false);
     if (value.length > 1) {
       const results = await fetchCitySuggestions(value);
       setSuggestions(results);
@@ -21,6 +23,7 @@ export default function Home() {
   const handleSuggestionClick = (suggestion) => {
     setCity(suggestion);
     setSuggestions([]);
+    setValidCity(true);
   };
 
   return (
@@ -49,12 +52,12 @@ export default function Home() {
       )}
       <div className="flex gap-4">
         <Link to="/custom-plan">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <button disabled = {!validcity} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
             Custom Plan
           </button>
         </Link>
         <Link to="/best-plan">
-          <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+          <button disabled={!validcity} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
             Best Plan
           </button>
         </Link>

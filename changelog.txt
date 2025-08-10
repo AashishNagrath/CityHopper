@@ -7,4 +7,5 @@
         change updates.txt to changelog.txt and moved it to root
     9 pm 
     added geoapify api function calls to autocomplete a city search
-
+    9:15 pm
+    diables the buttons until a valid city is selected from the suggestions
