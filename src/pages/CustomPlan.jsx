@@ -1,4 +1,5 @@
 import { useCityHopper } from "../CityHopperContext";
+import ArrivalModeSelector from "../components/ArrivalModeSelector";
 export default function CustomPlan() {
   const {
     city,
@@ -26,16 +27,7 @@ export default function CustomPlan() {
     <div className="p-6">
       <h2 className="text-3xl font-bold mb-4">Custom Plan ✏️</h2>
       <p>Select your arrival method and tourist spots here.</p>
-      <select
-        value={arrivalMode}
-        onChange={(e) => setArrivalMode(e.target.value)}
-        className="border p-2 rounded w-64 mb-6"
-      >
-        <option value="">Select Arrival Mode</option>
-        <option value="road">Road</option>
-        <option value="train">Train</option>
-        <option value="plane">Plane</option>
-      </select>
+      <ArrivalModeSelector/>
       <div className="mb-6">
         <p className="font-semibold mb-2">Tourist Spots:</p>
         {spots.map((spot) => (

@@ -1,5 +1,5 @@
 import { useCityHopper } from "../CityHopperContext";
-import { useState } from "react";
+import ArrivalModeSelector from "../components/ArrivalModeSelector";
 export default function BestPlan() {
   const {
     city,
@@ -9,7 +9,7 @@ export default function BestPlan() {
   } = useCityHopper();
 
   const isFormValid = arrivalMode !== "" &&
-    (tourType === "Full Time" || "Limited Time" && visitTime && Number(visitTime) > 0);
+    (tourType === "Full Time" || (tourType === "Limited Time" && visitTime && Number(visitTime) > 0));
 
 
   const handlelog = () => {
@@ -26,16 +26,7 @@ export default function BestPlan() {
       <h2 className="text-3xl font-bold mb-4">Best Plan ⭐</h2>
       <p>We’ll create the perfect city itinerary for your time frame.</p>
       <p>Select Arrival Type</p>
-      <select
-        value={arrivalMode}
-        onChange={(e) => setArrivalMode(e.target.value)}
-        className="border p-2 rounded w-64 mb-6"
-      >
-        <option value="">Select Arrival Mode</option>
-        <option value="road">Road</option>
-        <option value="train">Train</option>
-        <option value="plane">Plane</option>
-      </select>
+      <ArrivalModeSelector />
       <div className="mb-6">
         <p className="font-semibold mb-2">Tour Type:</p>
         <label className="mr-4">

@@ -11,3 +11,8 @@
     disables the buttons until a valid city is selected from the suggestions
     11 pm
     disables the  buttons until the form is complete in both bestplan and customplan
+
+11 Aug 25  
+    7pm
+    fixed logic for isformvalid in bestplan
+    created a reuable component for arrivalmode selection form to re-use it
