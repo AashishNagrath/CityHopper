@@ -8,6 +8,7 @@ export function CityHopperProvider({children}){
     const [selectedSpots, setSelectedSpots] = useState([]);
     const [tourType, setTourType] = useState("Full Time");
     const [visitTime, setVisitTime] = useState("");
+    const [touristSpots, setTouristSpots] = useState([]);
 
 return (
     <CityHopperContext.Provider value={{
@@ -15,7 +16,8 @@ return (
         arrivalMode, setArrivalMode,
         selectedSpots, setSelectedSpots,
         tourType, setTourType,
-        visitTime, setVisitTime}}>
+        visitTime, setVisitTime,
+        touristSpots, setTouristSpots}}>
     {children}
     </CityHopperContext.Provider>);
 }

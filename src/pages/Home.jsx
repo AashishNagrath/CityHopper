@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCityHopper } from "../CityHopperContext";
-import { fetchCitySuggestions } from "../api/geoapify";
+import { fetchCitySuggestions, fetchTouristSpots } from "../api/geoapify";
 
 export default function Home() {
-  const { city, setCity } = useCityHopper();
+  const { city, setCity, setTouristSpots } = useCityHopper();
   const [suggestions, setSuggestions] = useState([]);
   const [validcity, setValidCity] = useState(false);
 
@@ -20,12 +20,13 @@ export default function Home() {
     }
   };
 
-  const handleSuggestionClick = (suggestion) => {
-    setCity(suggestion);
+  const handleSuggestionClick = async (suggestion) => {
+    setCity(suggestion.label);
     setSuggestions([]);
     setValidCity(true);
+    const spots = await fetchTouristSpots({ lon: suggestion.lon, lat: suggestion.lat });
+    setTouristSpots(spots);
   };
-
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-50">
       <h1 className="text-4xl font-bold mb-6">CityHopper 🏙️</h1>
@@ -45,7 +46,7 @@ export default function Home() {
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
               onClick={() => handleSuggestionClick(s)}
             >
-              {s}
+              {s.label}
             </li>
           ))}
         </ul>

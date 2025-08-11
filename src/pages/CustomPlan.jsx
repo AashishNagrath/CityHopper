@@ -1,26 +1,30 @@
 import { useCityHopper } from "../CityHopperContext";
 import ArrivalModeSelector from "../components/ArrivalModeSelector";
+
 export default function CustomPlan() {
   const {
     city,
     arrivalMode, setArrivalMode,
-    selectedSpots, setSelectedSpots
+    selectedSpots, setSelectedSpots,
+    touristSpots
   } = useCityHopper();
 
-  const spots = ["red fort", "india gate", "qutub minar", "lotus temple"];
+  const spots = touristSpots;
 
-  const handleSpotChange = (spot) => {
+  const handleSpotChange = (spotId) => {
     setSelectedSpots((prev) =>
-      prev.includes(spot)
-        ? prev.filter((s) => s !== spot)
-        : [...prev, spot]
+      prev.includes(spotId)
+        ? prev.filter((s) => s !== spotId)
+        : [...prev, spotId]
     );
   };
+
   const isFormValid = selectedSpots.length > 0 && arrivalMode !== "";
   const handlelog = () => {
     console.log("City:", city);
     console.log("Arrival Mode:", arrivalMode);
-    console.log("Selected Spots:", selectedSpots);
+    const selectedSpotObjects = spots.filter(spot => selectedSpots.includes(spot.id));
+    console.log("Selected Spots:", selectedSpotObjects);
   };
 
   return (
@@ -31,14 +35,14 @@ export default function CustomPlan() {
       <div className="mb-6">
         <p className="font-semibold mb-2">Tourist Spots:</p>
         {spots.map((spot) => (
-          <label key={spot} className="block mb-1">
+          <label key={spot.id} className="block mb-1">
             <input
               type="checkbox"
-              checked={selectedSpots.includes(spot)}
-              onChange={() => handleSpotChange(spot)}
+              checked={selectedSpots.includes(spot.id)}
+              onChange={() => handleSpotChange(spot.id)}
               className="mr-2"
             />
-            {spot}
+            {spot.name || spot.address}
           </label>
         ))}
       </div>
