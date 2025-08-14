@@ -18,5 +18,14 @@
         created a reuable component for arrivalmode selection form to re-use it
     8pm 
         added api call to get tourist spots when city is selected
-        added a new array to conext that stores the tourist spots
-        implemented a better system to load the tourist spots in customplan
+        added a new array to context that stores the tourist spots
+        implemented a better system to load the tourist spots in customplan 
+    
+
+        added api call to fetch images for tourist spots//deprecated becuase I couldnt figure out how to make it work properly
+
+
+14 Aug 25
+    1 pm
+        roll back to changes before implementing unsplash
+        added a loading text when tourist spots are being fetched
